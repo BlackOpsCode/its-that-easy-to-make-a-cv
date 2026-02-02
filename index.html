@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Simply CV Here</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- PDF library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+  <!-- PARTICULES ANIMATE -->
+  <div id="particles-container"></div>
+
+  <!-- HEADER SUS, STATIC -->
+  <header>
+    <h1>Simply CV Here</h1>
+    <p>Write. Click. Done.</p>
+  </header>
+
+  <!-- FORM CENTRAT -->
+  <div class="form">
+    <input id="name" placeholder="Your Name" />
+    <input id="title" placeholder="Your Position / Title" />
+    <input id="email" placeholder="Email" />
+    <input id="phone" placeholder="Phone" />
+    <input id="linkedin" placeholder="LinkedIn / GitHub URL" />
+
+    <textarea id="skills" placeholder="Skills (comma separated)"></textarea>
+    <textarea id="experience" placeholder="Experience (2–3 bullet points)"></textarea>
+    <textarea id="education" placeholder="Education"></textarea>
+
+    <button onclick="generateCV()">Generate CV Preview</button>
+  </div>
+
+  <!-- CV TEMPLATE (hidden) -->
+  <div id="cv">
+    <h1 id="cv-name"></h1>
+    <p id="cv-title"></p>
+
+    <div class="contact">
+      <span id="cv-email"></span> | 
+      <span id="cv-phone"></span> | 
+      <span id="cv-linkedin"></span>
+    </div>
+
+    <hr />
+
+    <h2>Skills</h2>
+    <p id="cv-skills"></p>
+
+    <hr />
+
+    <h2>Experience</h2>
+    <p id="cv-experience"></p>
+
+    <hr />
+
+    <h2>Education</h2>
+    <p id="cv-education"></p>
+
+    <div class="watermark">Simply CV Here</div>
+  </div>
+
+  <!-- PREVIEW (vizibil direct) -->
+  <div id="preview-container">
+    <h2>Preview</h2>
+    <div id="cv-preview" style="border:1px solid #ccc; border-radius:12px; padding:20px;"></div>
+    <button onclick="downloadPDF()" style="margin-top:10px;">Download PDF</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

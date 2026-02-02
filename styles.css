@@ -1,0 +1,204 @@
+/* BODY */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  background: linear-gradient(to bottom, #f9f9f9 0%, #cce0ff 100%);
+  color: #222;
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding: 0 10px; /* padding mic pentru mobil */
+}
+
+/* HEADER SUS, STATIC */
+header {
+  position: relative;
+  text-align: left;
+  margin: 40px 40px 0 40px;
+  z-index: 1;
+  background: none; 
+  padding: 0;
+}
+
+header h1 {
+  font-size: 3rem; 
+  font-weight: 900; 
+  margin: 0;
+  color: #4dabf7;
+}
+
+header p {
+  margin: 0;
+  font-size: 1.2rem; 
+  color: #555;
+}
+
+/* FORM CENTRAT */
+.form {
+  position: relative;
+  z-index: 5;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 500px;
+  margin: 20px auto 40px auto;
+  box-shadow: none;
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #fefefe;
+  color: #222;
+  transition: border 0.2s, background 0.2s;
+  font-family: Arial, sans-serif;
+}
+
+.form input:focus,
+.form textarea:focus {
+  outline: none;
+  border-color: #4dabf7;
+  background-color: #fff;
+}
+
+/* BUTTON */
+button {
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  background-color: #4dabf7;
+  color: #fff;
+  font-weight: bold;
+  transition: background 0.2s, transform 0.1s;
+}
+
+button:hover {
+  background-color: #1971c2;
+  transform: translateY(-2px);
+}
+
+/* PREVIEW ȘI CV ASCUNSE INITIAl */
+#preview-container,
+#cv {
+  display: none;
+}
+
+/* CV STYLES FOR DOWNLOAD / PDF */
+#cv {
+  padding: 40px;
+  max-width: 800px;
+  margin: 20px auto;
+  color: #222;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#cv h1 {
+  margin-bottom: 8px;
+  font-size: 2.5rem;
+  color: #4dabf7;
+  font-weight: 900;
+}
+
+#cv h2 {
+  margin-top: 32px;
+  margin-bottom: 8px;
+  border-bottom: 2px solid #4dabf7;
+  color: #222;
+  font-size: 1.5rem;
+  padding-bottom: 4px;
+}
+
+#cv p {
+  line-height: 1.5;
+  font-size: 14px;
+  color: #444;
+  margin: 4px 0;
+}
+
+#cv .contact {
+  margin: 10px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+#cv-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+#cv-skills span {
+  background-color: #4dabf7;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* WATERMARK */
+.watermark {
+  margin-top: 40px;
+  font-size: 12px;
+  opacity: 0.2;
+  text-align: center;
+  font-style: italic;
+  color: #888;
+}
+
+/* RESPONSIVE CV */
+@media (max-width: 768px) {
+  #cv {
+    padding: 20px;
+  }
+  #cv h1 {
+    font-size: 2rem;
+  }
+  #cv h2 {
+    font-size: 1.3rem;
+  }
+  #cv p,
+  #cv .contact {
+    font-size: 13px;
+  }
+  #cv-skills span {
+    font-size: 12px;
+    padding: 3px 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  #cv {
+    padding: 15px;
+  }
+  #cv h1 {
+    font-size: 1.8rem;
+  }
+  #cv h2 {
+    font-size: 1.1rem;
+  }
+  #cv p,
+  #cv .contact {
+    font-size: 12px;
+  }
+  #cv-skills {
+    gap: 4px;
+  }
+  #cv-skills span {
+    font-size: 11px;
+    padding: 2px 5px;
+  }
+}
