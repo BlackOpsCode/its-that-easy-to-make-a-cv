@@ -1,75 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Simply CV Here</title>
-  <link rel="stylesheet" href="styles.css" />
-
-  <!-- PDF library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SimplyCV - CV Generator</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
 
-  <!-- PARTICULES ANIMATE -->
-  <div id="particles-container"></div>
+<div class="main-wrapper">
 
-  <!-- HEADER SUS, STATIC -->
-  <header>
-    <h1>Simply CV Here</h1>
-    <p>Write. Click. Done.</p>
-  </header>
+    <div class="top-bar">SimplyCV - CV Generator</div>
 
-  <!-- FORM CENTRAT -->
-  <div class="form">
-    <input id="name" placeholder="Your Name" />
-    <input id="title" placeholder="Your Position / Title" />
-    <input id="email" placeholder="Email" />
-    <input id="phone" placeholder="Phone" />
-    <input id="linkedin" placeholder="LinkedIn / GitHub URL" />
+    <div class="form-container">
+        <h2>CV Information</h2>
 
-    <textarea id="skills" placeholder="Skills (comma separated)"></textarea>
-    <textarea id="experience" placeholder="Experience (2–3 bullet points)"></textarea>
-    <textarea id="education" placeholder="Education"></textarea>
+        <div class="input-group">
+            <label>Full Name</label>
+            <input type="text" id="inName" placeholder="John Doe" oninput="updateCV()">
+        </div>
 
-    <button onclick="generateCV()">Generate CV Preview</button>
-  </div>
+        <div class="input-group">
+            <label>Email</label>
+            <input type="text" id="inEmail" placeholder="john@mail.com" oninput="updateCV()">
+        </div>
 
-  <!-- CV TEMPLATE (hidden) -->
-  <div id="cv">
-    <h1 id="cv-name"></h1>
-    <p id="cv-title"></p>
+        <div class="input-group">
+            <label>Phone</label>
+            <input type="text" id="inPhone" placeholder="+1 234 567 890" oninput="updateCV()">
+        </div>
 
-    <div class="contact">
-      <span id="cv-email"></span> | 
-      <span id="cv-phone"></span> | 
-      <span id="cv-linkedin"></span>
+        <div class="input-group">
+            <label>GitHub / LinkedIn</label>
+            <input type="text" id="inGithub" placeholder="github.com/john" oninput="updateCV()">
+        </div>
+
+        <div class="input-group">
+            <label>Skills (comma separated)</label>
+            <input type="text" id="inSkills" placeholder="JS, React, Python" oninput="updateCV()">
+        </div>
+
+        <div class="input-group">
+            <label>Work Experience (one line per item)</label>
+            <textarea id="inXp" rows="4" oninput="updateCV()"></textarea>
+        </div>
+
+        <div class="input-group">
+            <label>Education (one line per item)</label>
+            <textarea id="inEdu" rows="4" oninput="updateCV()"></textarea>
+        </div>
+
+        <button onclick="downloadPDF()">Download PDF</button>
     </div>
 
-    <hr />
+    <div id="cv-preview">
+        <div class="cv-header">
+            <h1 class="cv-name" id="outName">Your Name</h1>
+            <div class="cv-contact" id="outContact">Email | Phone | GitHub</div>
+        </div>
 
-    <h2>Skills</h2>
-    <p id="cv-skills"></p>
+        <div class="cv-section">
+            <h3>Skills</h3>
+            <ul id="outSkills"></ul>
+        </div>
 
-    <hr />
+        <div class="cv-section">
+            <h3>Work Experience</h3>
+            <ul id="outXp"></ul>
+        </div>
 
-    <h2>Experience</h2>
-    <p id="cv-experience"></p>
+        <div class="cv-section">
+            <h3>Education</h3>
+            <ul id="outEdu"></ul>
+        </div>
+    </div>
+</div>
 
-    <hr />
-
-    <h2>Education</h2>
-    <p id="cv-education"></p>
-
-    <div class="watermark">Simply CV Here</div>
-  </div>
-
-  <!-- PREVIEW (vizibil direct) -->
-  <div id="preview-container">
-    <h2>Preview</h2>
-    <div id="cv-preview" style="border:1px solid #ccc; border-radius:12px; padding:20px;"></div>
-    <button onclick="downloadPDF()" style="margin-top:10px;">Download PDF</button>
-  </div>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

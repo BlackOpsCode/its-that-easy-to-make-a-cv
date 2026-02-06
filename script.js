@@ -1,44 +1,54 @@
-function generateCV() {
-  // preluăm valorile din inputuri
-  const name = document.getElementById("name").value.trim();
-  const title = document.getElementById("title").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const linkedin = document.getElementById("linkedin").value.trim();
-  const skills = document.getElementById("skills").value.trim();
-  const experience = document.getElementById("experience").value.trim();
-  const education = document.getElementById("education").value.trim();
+function updateCV() {
+    // Name
+    document.getElementById('outName').innerText = document.getElementById('inName').value || "Your Name";
 
-  // verificăm dacă toate câmpurile sunt completate
-  if (!name || !title || !email || !phone || !linkedin || !skills || !experience || !education) {
-    alert("⚠️ Please fill in all fields before generating your CV!");
-    return; // oprim funcția
-  }
+    // Contact
+    const email = document.getElementById('inEmail').value.trim();
+    const phone = document.getElementById('inPhone').value.trim();
+    const github = document.getElementById('inGithub').value.trim();
+    const contactStr = [email, phone, github].filter(s => s).join(" | ");
+    document.getElementById('outContact').innerText = contactStr || "Email | Phone | GitHub";
 
-  // completăm CV-ul
-  document.getElementById("cv-name").textContent = name;
-  document.getElementById("cv-title").textContent = title;
-  document.getElementById("cv-email").textContent = email;
-  document.getElementById("cv-phone").textContent = phone;
-  document.getElementById("cv-linkedin").textContent = linkedin;
-  document.getElementById("cv-skills").textContent = skills.split(",").map(s => s.trim()).join(", ");
-  document.getElementById("cv-experience").textContent = experience;
-  document.getElementById("cv-education").textContent = education;
+    // Skills
+    const skills = document.getElementById('inSkills').value.split(',');
+    const skillsList = document.getElementById('outSkills');
+    skillsList.innerHTML = "";
+    skills.forEach(s => { 
+        if(s.trim()){ 
+            let li = document.createElement('li'); 
+            li.innerText = s.trim(); 
+            skillsList.appendChild(li); 
+        } 
+    });
 
-  // afișăm preview-ul și CV-ul
-  const cv = document.getElementById("cv");
-  const preview = document.getElementById("cv-preview");
-
-  preview.innerHTML = cv.innerHTML; // copiem conținutul în preview
-  document.getElementById("preview-container").style.display = "block";
-  cv.style.display = "block"; // păstrăm CV-ul vizibil doar dacă vrei să-l folosești direct
+    // Experience and Education
+    updateList('inXp', 'outXp');
+    updateList('inEdu', 'outEdu');
 }
 
-// funcție pentru PDF
+function updateList(inputId, outputId) {
+    const lines = document.getElementById(inputId).value.split('\n');
+    const list = document.getElementById(outputId);
+    list.innerHTML = "";
+    lines.forEach(line => { 
+        if(line.trim()){ 
+            let li = document.createElement('li'); 
+            li.innerText = line.trim(); 
+            list.appendChild(li); 
+        } 
+    });
+}
+
 function downloadPDF() {
-  const element = document.getElementById("cv");
-  html2pdf()
-    .set({ margin: 10, filename: 'CV.pdf', html2canvas: { scale: 2 } })
-    .from(element)
-    .save();
+    const element = document.getElementById('cv-preview');
+    html2pdf().set({
+        margin: 10,
+        filename: 'SimplyCV.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true, width: 793 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    }).from(element).save();
 }
+
+// Initialize preview
+updateCV();
