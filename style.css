@@ -7,64 +7,78 @@
     --radius: 10px;
 }
 
-* { box-sizing: border-box; margin:0; padding:0; }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
+/* BODY */
 body {
     font-family: 'Segoe UI', sans-serif;
     background-color: var(--bg-body);
     min-height: 100vh;
+    padding: 20px;
+}
+
+/* FONT CONSISTENCY */
+input, textarea, #cv-preview {
+    font-family: 'Segoe UI', sans-serif;
+    font-variant-ligatures: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* WRAPPER */
+.main-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
     display: flex;
-    justify-content: center;
-    padding: 10px;
+    flex-direction: column;
+    gap: 20px;
 }
 
 /* TOP BAR */
 .top-bar {
-    width: 100%;
-    max-width: 800px;
     background: var(--primary-blue);
     color: var(--white);
     font-weight: 700;
     font-size: 1.3em;
     text-align: center;
     padding: 14px 0;
-    border-radius: var(--radius) var(--radius) 0 0;
-    margin-bottom: 15px;
+    border-radius: var(--radius);
     box-shadow: 0 4px 10px var(--card-shadow);
-}
 
-.main-wrapper {
     width: 100%;
     max-width: 800px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin-bottom: 40px;
+    margin: 0 auto;
 }
 
 /* FORM */
 .form-container {
     background: var(--white);
-    padding: 20px;
+    padding: 18px;
     border-radius: var(--radius);
     box-shadow: 0 6px 16px var(--card-shadow);
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
+
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .form-container h2 {
-    font-size: 1.2em;
     color: var(--primary-blue);
-    margin-bottom: 10px;
+    font-size: 1.2em;
 }
 
 .input-group label {
-    display: block;
     font-weight: bold;
     font-size: 0.9em;
     margin-bottom: 4px;
     color: #1f3c6c;
+    display: block;
 }
 
 input, textarea {
@@ -73,52 +87,26 @@ input, textarea {
     border: 1px solid #b0c4de;
     border-radius: 6px;
     font-size: 0.95em;
-    transition: border 0.2s, box-shadow 0.2s;
 }
 
 input:focus, textarea:focus {
     border-color: var(--primary-light);
-    box-shadow: 0 0 5px var(--primary-light);
     outline: none;
 }
 
-button {
-    background: linear-gradient(90deg, var(--primary-blue), var(--primary-light));
-    color: var(--white);
-    padding: 12px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 1em;
-    transition: opacity 0.2s, transform 0.1s;
-}
-
-button:hover {
-    opacity: 0.95;
-    transform: translateY(-2px);
-}
-
-/* PREVIEW CV */
+/* CV DOCUMENT */
 #cv-preview {
     background: var(--white);
-    padding: 40px;
-    width: 210mm;
-    min-height: 297mm;
-    margin: 0 auto;
-    box-sizing: border-box;
+    width: 100%;
+    max-width: 800px;
+    height: 297mm; /* fix pentru 1 pagină PDF */
+    padding: 20mm;  
     box-shadow: 0 6px 20px var(--card-shadow);
-    border-radius: var(--radius);
+    box-sizing: border-box;
+    margin: 0 auto 2rem auto;
 }
 
-@media (max-width: 800px) {
-    #cv-preview {
-        width: 100%;
-        min-height: auto;
-        padding: 20px;
-    }
-}
-
+/* HEADER */
 .cv-header {
     border-bottom: 2px solid var(--primary-blue);
     padding-bottom: 12px;
@@ -126,26 +114,90 @@ button:hover {
 }
 
 .cv-name {
-    font-size: 24px;
+    font-size: 40px; /* ușor mai mare */
     color: var(--primary-blue);
-    margin: 0;
 }
 
 .cv-contact {
-    font-size: 12px;
+    font-size: 24px; /* ușor mai mare */
     color: #475569;
-    margin-top: 2px;
+    letter-spacing: 0.5px;
 }
 
-.cv-section { margin-bottom: 20px; }
+/* SECTIONS */
+.cv-section {
+    margin-bottom: 20px;
+    page-break-inside: avoid;
+}
+
 .cv-section h3 {
     background: var(--primary-blue);
     color: var(--white);
     padding: 5px 12px;
     font-size: 15px;
-    margin: 0 0 8px 0;
     border-radius: 4px;
+    margin-bottom: 8px;
 }
 
-ul { padding-left: 20px; margin: 0; }
-li { font-size: 1em; margin-bottom: 4px; }
+/* TEXT */
+#summarySection p {
+    font-size: 0.95em;
+    line-height: 1.5;
+    color: #334155;
+}
+
+/* LISTS */
+ul {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 4px;
+    font-size: 1em;
+}
+
+/* DOWNLOAD BUTTON */
+.download-btn {
+    background: linear-gradient(90deg, var(--primary-blue), var(--primary-light));
+    color: var(--white);
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 1em;
+    cursor: pointer;
+
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    display: block;
+}
+
+/* MOBILE */
+@media (max-width: 800px) {
+    #cv-preview {
+        width: 100%;
+        height: auto;
+        padding: 24px;
+    }
+
+    .top-bar,
+    .form-container,
+    .download-btn {
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
+/* PRINT */
+@media print {
+    #cv-preview {
+        box-shadow: none;
+        margin: 0;
+        background: var(--white);
+    }
+
+    body {
+        background: white;
+    }
+}

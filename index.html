@@ -4,15 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SimplyCV - CV Generator</title>
+
 <link rel="stylesheet" href="style.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
+
 <body>
 
 <div class="main-wrapper">
 
     <div class="top-bar">SimplyCV - CV Generator</div>
 
+    <!-- FORM -->
     <div class="form-container">
         <h2>CV Information</h2>
 
@@ -37,6 +40,15 @@
         </div>
 
         <div class="input-group">
+            <label>Personal Description</label>
+            <textarea
+                id="inSummary"
+                rows="4"
+                placeholder="Short professional summary about yourself"
+                oninput="updateCV()"></textarea>
+        </div>
+
+        <div class="input-group">
             <label>Skills (comma separated)</label>
             <input type="text" id="inSkills" placeholder="JS, React, Python" oninput="updateCV()">
         </div>
@@ -50,14 +62,21 @@
             <label>Education (one line per item)</label>
             <textarea id="inEdu" rows="4" oninput="updateCV()"></textarea>
         </div>
-
-        <button onclick="downloadPDF()">Download PDF</button>
     </div>
 
+    <!-- PREVIEW -->
     <div id="cv-preview">
+
         <div class="cv-header">
             <h1 class="cv-name" id="outName">Your Name</h1>
-            <div class="cv-contact" id="outContact">Email | Phone | GitHub</div>
+            <div class="cv-contact" id="outContact">
+                Email | Phone | GitHub
+            </div>
+        </div>
+
+        <div class="cv-section" id="summarySection">
+            <h3>Profile</h3>
+            <p id="outSummary"></p>
         </div>
 
         <div class="cv-section">
@@ -74,7 +93,14 @@
             <h3>Education</h3>
             <ul id="outEdu"></ul>
         </div>
+
     </div>
+
+    <!-- DOWNLOAD BUTTON LAST -->
+    <button class="download-btn" onclick="downloadPDF()">
+        Download PDF
+    </button>
+
 </div>
 
 <script src="script.js"></script>
