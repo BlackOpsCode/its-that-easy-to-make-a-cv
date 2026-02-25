@@ -3,8 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SimplyCV - CV Generator</title>
-
+<title>GetIt-CV – The Generator That Gets You Hired | Fast Developer CV Builder</title>
+<meta name="description" content="GetIt-CV helps you generate a professional developer CV in seconds. ATS friendly, no login, one click download, minimal and fast CV generation.">
+<meta name="keywords" content="developer CV, ATS friendly, fast CV generation, one click CV, no login, tech CV, GetIt-CV, minimal CV builder, download CV, professional CV, resume builder">
+<meta name="robots" content="index, follow">
+<meta name="author" content="GetIt-CV">
 <link rel="stylesheet" href="style.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
@@ -13,11 +16,11 @@
 
 <div class="main-wrapper">
 
-    <div class="top-bar">SimplyCV - CV Generator</div>
+    <div class="top-bar">GetIt-CV — The Generator That Gets You Hired</div>
 
     <!-- FORM -->
     <div class="form-container">
-        <h2>CV Information</h2>
+        <h2>Developer CV Info</h2>
 
         <div class="input-group">
             <label>Full Name</label>
@@ -31,36 +34,41 @@
 
         <div class="input-group">
             <label>Phone</label>
-            <input type="text" id="inPhone" placeholder="+1 234 567 890" oninput="updateCV()">
+            <input type="text" id="inPhone" placeholder="+40 7xx xxx xxx" oninput="updateCV()">
         </div>
 
         <div class="input-group">
-            <label>GitHub / LinkedIn</label>
-            <input type="text" id="inGithub" placeholder="github.com/john" oninput="updateCV()">
+            <label>GitHub</label>
+            <input type="text" id="inGithub" placeholder="github.com/johndoe" oninput="updateCV()">
         </div>
 
         <div class="input-group">
-            <label>Personal Description</label>
+            <label>LinkedIn</label>
+            <input type="text" id="inLinkedin" placeholder="linkedin.com/in/johndoe" oninput="updateCV()">
+        </div>
+
+        <div class="input-group">
+            <label>Professional Summary (Tech Focused)</label>
             <textarea
                 id="inSummary"
-                rows="4"
-                placeholder="Short professional summary about yourself"
+                rows="3"
+                placeholder="Backend developer with experience in Node.js and distributed systems..."
                 oninput="updateCV()"></textarea>
         </div>
 
         <div class="input-group">
-            <label>Skills (comma separated)</label>
-            <input type="text" id="inSkills" placeholder="JS, React, Python" oninput="updateCV()">
+            <label>Tech Stack (comma separated)</label>
+            <input type="text" id="inStack" placeholder="JavaScript, React, Node.js, Docker, PostgreSQL" oninput="updateCV()">
         </div>
 
         <div class="input-group">
-            <label>Work Experience (one line per item)</label>
-            <textarea id="inXp" rows="4" oninput="updateCV()"></textarea>
+            <label>Projects / Experience (one line per item)</label>
+            <textarea id="inXp" rows="4" placeholder="Built REST API with Node.js serving 10k users/day" oninput="updateCV()"></textarea>
         </div>
 
         <div class="input-group">
-            <label>Education (one line per item)</label>
-            <textarea id="inEdu" rows="4" oninput="updateCV()"></textarea>
+            <label>Education</label>
+            <textarea id="inEdu" rows="3" placeholder="BSc Computer Science - 2023" oninput="updateCV()"></textarea>
         </div>
     </div>
 
@@ -70,22 +78,21 @@
         <div class="cv-header">
             <h1 class="cv-name" id="outName">Your Name</h1>
             <div class="cv-contact" id="outContact">
-                Email | Phone | GitHub
+                Email | Phone | GitHub | LinkedIn
             </div>
         </div>
 
         <div class="cv-section" id="summarySection">
-            <h3>Profile</h3>
             <p id="outSummary"></p>
         </div>
 
         <div class="cv-section">
-            <h3>Skills</h3>
-            <ul id="outSkills"></ul>
+            <h3>Tech Stack</h3>
+            <p id="outStack"></p>
         </div>
 
         <div class="cv-section">
-            <h3>Work Experience</h3>
+            <h3>Projects / Experience</h3>
             <ul id="outXp"></ul>
         </div>
 
@@ -96,9 +103,8 @@
 
     </div>
 
-    <!-- DOWNLOAD BUTTON LAST -->
     <button class="download-btn" onclick="downloadPDF()">
-        Download PDF
+        Download PDF — GetIt-CV
     </button>
 
 </div>
